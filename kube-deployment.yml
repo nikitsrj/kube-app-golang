@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: db
-        image: starkdb
+        image: nicksrj/starkdb
         ports:
         - containerPort: 5432
           name: db
@@ -62,7 +62,7 @@ spec:
     spec:
       containers:
       - name: words
-        image: starkword
+        image: nicksrj/starkword
         ports:
         - containerPort: 8080
           name: api
@@ -96,7 +96,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: starkweb
+        image: nicksrj/starkweb
         ports:
         - containerPort: 80
           name: words-web
