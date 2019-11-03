@@ -1,4 +1,3 @@
-{{ if and .Values.starkdb.enabled (eq .Values.starkdb.enabled "true") }}
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -20,4 +19,3 @@ spec:
           name: db
       imagePullSecrets:
       - name: {{.Values.starkdb.imagePullSecrets}}
-{{ end }}

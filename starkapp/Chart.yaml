@@ -1,5 +1,4 @@
 apiVersion: v1
 description: A Helm chart for starkapp
-name: starkapp-dep
+name: starkapp
 version: 0.1.0
-maintainers: nikit.swaraj@global.ntt

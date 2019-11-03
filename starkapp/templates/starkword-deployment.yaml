@@ -1,4 +1,3 @@
-{{ if and .Values.starkword.enabled (eq .Values.starkword.enabled "true") }}
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -21,4 +20,3 @@ spec:
           name: api
       imagePullSecrets:
       - name: {{.Values.starkword.imagePullSecrets}}
-{{ end }}

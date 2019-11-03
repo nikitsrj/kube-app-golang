@@ -1,4 +1,3 @@
-{{ if and .Values.starkweb.enabled (eq .Values.starkweb.enabled "true") }}
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -16,9 +15,8 @@ spec:
       containers:
       - name: {{ .Values.starkweb.Appname }}
         image: {{ .Values.starkweb.image.repository }}:{{ .Values.starkweb.image.tag }}
-        imagePullPolicy: {{ .Values.starkweb.image.pullPolicy}}
+        imagePullPolicy: {{ .Values.starkweb.image.pullPolicy }}
         ports:
-        - containerPort: {{ .Values.starkweb.internalPort}}
+        - containerPort: {{ .Values.starkweb.internalPort }}
       imagePullSecrets:
-        - name: {{.Values.starkweb.imagePullSecrets}}
-{{ end }}
+        - name: {{.Values.starkweb.imagePullSecrets }}
