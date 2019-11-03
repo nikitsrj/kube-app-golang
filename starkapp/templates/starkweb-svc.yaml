@@ -11,4 +11,4 @@ spec:
       name: web
   selector:
     app: {{ .Values.starkweb.Appname }}
-  type: LoadBalancer
+  ClusterIP: None
