@@ -27,3 +27,6 @@ starkdb:
      tag: db
    internalPort: 5432
    imagePullSecrets: harbkubesec
+ingress:
+   name: stark-ingress
+   host: yourdomain.here
