@@ -13,13 +13,16 @@ spec:
     app: words-db
   clusterIP: None
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: db
   labels:
     app: words-db
 spec:
+  selector:
+    matchLabels:
+      app: words-db
   template:
     metadata:
       labels:
@@ -27,7 +30,7 @@ spec:
     spec:
       containers:
       - name: db
-        image: nicksrj/starkdb
+        image: nicksrj/starkapp:db
         ports:
         - containerPort: 5432
           name: db
@@ -47,7 +50,7 @@ spec:
     app: words-api
   clusterIP: None
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: words
@@ -55,6 +58,9 @@ metadata:
     app: words-api
 spec:
   replicas: 5
+  selector:
+    matchLabels:
+      app: words-api
   template:
     metadata:
       labels:
@@ -62,7 +68,7 @@ spec:
     spec:
       containers:
       - name: words
-        image: nicksrj/starkword
+        image: nicksrj/starkapp:words
         ports:
         - containerPort: 8080
           name: api
@@ -75,20 +81,23 @@ metadata:
     app: words-web
 spec:
   ports:
-    - port: 8081
+    - port: 80
       targetPort: 80
       name: web
   selector:
     app: words-web
   type: LoadBalancer
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web
   labels:
     app: words-web
 spec:
+  selector:
+    matchLabels:
+      app: words-web
   template:
     metadata:
       labels:
@@ -96,7 +105,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: nicksrj/starkweb
+        image: nicksrj/starkapp:web-dark
         ports:
         - containerPort: 80
           name: words-web
